@@ -14,7 +14,7 @@ enum TransactionType: String {
 }
 
 struct Transaction: Codable, CustomStringConvertible {
-    let timestamp: Int64
+    let timestamp: TimeInterval
     let amount: Int64
     let type: TransactionType
     
@@ -25,7 +25,7 @@ struct Transaction: Codable, CustomStringConvertible {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        timestamp = try container.decode(Int64.self, forKey: .timestamp)
+        timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
         amount = try container.decode(Int64.self, forKey: .amount)
         type = amount > 0 ? .received : .sent
     }
@@ -35,21 +35,54 @@ struct Transaction: Codable, CustomStringConvertible {
     }
 }
 
-// Formatting
+// MARK: Math
+extension Transaction {
+    var bitcoins: Double {
+        return Double(amount) * 1e-8
+    }
+}
+
+// MARK: Dates
+extension Transaction {
+    var date: Date {
+        return Date(timeIntervalSince1970: timestamp)
+    }
+}
+
+// MARK: Formatting
+extension Formatter {
+    static let avoidNotation: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 8
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter
+    }()
+}
+
+extension FloatingPoint {
+    var avoidNotation: String {
+        return Formatter.avoidNotation.string(for: self) ?? ""
+    }
+}
+
 extension Transaction {
     var typeString: String {
         return type == .sent ? "Sent" : "Received"
     }
     
-    var amountString: String {
-        return "\(amount) BTC"
+    var bitcoinString: String {
+        return "\(abs(bitcoins).avoidNotation) BTC"
     }
     
     var dateString: String {
-        return "01/01/2018"
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "M/dd/yy"
+        return dateformatter.string(from: date)
     }
     
     var timeString: String {
-        return "8:54pm"
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "h:mm a"
+        return dateformatter.string(from: date)
     }
 }

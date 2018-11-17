@@ -33,8 +33,8 @@ class TransactionCollectionViewCell: UICollectionViewCell {
             return
         }
         sentLabel.text = transaction.typeString
-        amountLabel.text = transaction.amountString
-        timeDateLabel.text = "\(transaction.timeString)\n\(transaction.dateString)"
+        amountLabel.text = transaction.bitcoinString
+        timeDateLabel.text = "\(transaction.dateString)\n\(transaction.timeString)"
     }
     
     func updateColors() {

@@ -17,6 +17,7 @@ class TransactionsViewController: UICollectionViewController {
     enum State {
         case loading
         case loaded(Wallet)
+        case detail(Wallet, Transaction)
         case error(APIError)
     }
     
@@ -64,14 +65,14 @@ class TransactionsViewController: UICollectionViewController {
     
     func updateLayout() {
         switch(state) {
-        case .error:
+        case .error, .loading, .detail:
             self.collectionView.collectionViewLayout = self.fullScreenLayout
-        case .loading, .loaded(_):
+        case .loaded(_):
             self.collectionView.collectionViewLayout = self.listLayout
         }
     }
     
-    //MARK: - Layouts
+    //MARK: Layouts
     
     lazy var fullScreenLayout:UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -100,12 +101,9 @@ class TransactionsViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch(state) {
-        case .loading:
-            // simulate infinite scrolling while loading
-            return 99999
-        case .loaded(let wallet):
+        case .loaded(let wallet), .detail(let wallet, _):
             return wallet.transactions.count
-        case .error:
+        case .error, .loading:
             return 1
         }
     }
@@ -113,17 +111,21 @@ class TransactionsViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch(state) {
-        case .loaded(let wallet):
+        case .loaded(let wallet), .detail(let wallet, _):
             let transactionCell = collectionView.dequeueReusableCell(withReuseIdentifier: TransactionCollectionViewCell.cellIdentifier, for: indexPath) as! TransactionCollectionViewCell
             transactionCell.transaction = wallet.transactions[indexPath.row]
             return transactionCell
         case .loading:
-            let transactionCell = collectionView.dequeueReusableCell(withReuseIdentifier: TransactionCollectionViewCell.cellIdentifier, for: indexPath) as! TransactionCollectionViewCell
-            transactionCell.transaction = nil
-            return transactionCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCollectionViewCell.cellIdentifier, for: indexPath)
         case .error:
-            let errorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.cellIdentifier, for: indexPath) as! ErrorCollectionViewCell
-            return errorCell
+            return collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.cellIdentifier, for: indexPath)
         }
+    }
+    
+    // MARK: Lifecycle
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.fullScreenLayout.invalidateLayout()
+        self.listLayout.invalidateLayout()
     }
 }

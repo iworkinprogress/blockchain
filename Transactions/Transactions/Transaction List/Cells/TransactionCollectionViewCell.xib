@@ -23,14 +23,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="462" height="130"/>
                         <color key="backgroundColor" red="0.84313725490000002" green="0.27450980390000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.000571 B TC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8J-zn-PAP">
-                        <rect key="frame" x="20" y="50.5" width="163.5" height="29"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00000571 BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8J-zn-PAP">
+                        <rect key="frame" x="20" y="50.5" width="322" height="29"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsT-6A-BTf">
-                        <rect key="frame" x="20" y="31" width="36" height="19.5"/>
+                        <rect key="frame" x="20" y="31" width="322" height="19.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -56,11 +56,11 @@
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="Z34-DE-ewP" secondAttribute="trailing" constant="20" id="FkZ-0f-nff"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="gH3-e5-zh7" secondAttribute="trailing" id="GKZ-7J-TxA"/>
                 <constraint firstItem="B6k-kl-vm1" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="KQh-cq-dXg"/>
-                <constraint firstItem="Z34-DE-ewP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="k8J-zn-PAP" secondAttribute="trailing" constant="20" id="Zcs-DN-YwM"/>
+                <constraint firstItem="Z34-DE-ewP" firstAttribute="leading" secondItem="k8J-zn-PAP" secondAttribute="trailing" constant="20" id="Zcs-DN-YwM"/>
                 <constraint firstItem="gH3-e5-zh7" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="aGC-GA-fSs"/>
                 <constraint firstItem="gH3-e5-zh7" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="bZf-j2-3Hc"/>
                 <constraint firstItem="k8J-zn-PAP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="f6B-Zu-FXG"/>
-                <constraint firstItem="Z34-DE-ewP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JsT-6A-BTf" secondAttribute="trailing" constant="20" id="gsJ-jx-pX9"/>
+                <constraint firstItem="Z34-DE-ewP" firstAttribute="leading" secondItem="JsT-6A-BTf" secondAttribute="trailing" constant="20" id="gsJ-jx-pX9"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="B6k-kl-vm1" secondAttribute="trailing" id="hcJ-AX-0SE"/>
                 <constraint firstItem="k8J-zn-PAP" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="hsh-ks-ibf"/>
                 <constraint firstItem="k8J-zn-PAP" firstAttribute="top" secondItem="JsT-6A-BTf" secondAttribute="bottom" id="mSy-wP-yUs"/>
