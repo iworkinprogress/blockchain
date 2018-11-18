@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum TransactionPresentation {
+    case list
+    case detail
+}
+
+private let lineOpacity: CGFloat = 0.25
+
 class TransactionCollectionViewCell: UICollectionViewCell {
     
     static let nibName = "TransactionCollectionViewCell"
@@ -17,12 +24,40 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var timeDateLabel: UILabel!
     @IBOutlet var contentBackgroundView: UIView!
+    @IBOutlet var detailContentView: UIView!
+    @IBOutlet var horizontalLine: UIView!
+    @IBOutlet var verticalLine: UIView!
+    
+    // Autolayout Constraints
+    @IBOutlet var topSpaceConstraint: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentBackgroundView.layer.shadowColor = UIColor.black.cgColor
+    }
 
     var transaction: Transaction? {
         didSet {
             updateColors()
             updateContent()
         }
+    }
+    
+    var presentation: TransactionPresentation = .list {
+        didSet {
+            animatePresentationChange()
+        }
+    }
+    
+    func animatePresentationChange() {
+        topSpaceConstraint.constant = presentation == .list ? 20 : 20
+        let detailContentAlpha: CGFloat = presentation == .detail ? 1.0 : 0.0
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+            self.detailContentView.alpha = detailContentAlpha
+        }
+        horizontalLine.alpha = presentation == .list ? lineOpacity : 0.0
+        verticalLine.alpha = presentation == .detail ? lineOpacity : 0.0
     }
     
     func updateContent() {
@@ -48,5 +83,10 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         case .received:
             contentBackgroundView.backgroundColor = Colors.received
         }
+    }
+
+    //MARK: Lifecycle
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        layoutIfNeeded()
     }
 }

@@ -36,3 +36,12 @@ struct Wallet: Codable, CustomStringConvertible {
         return "Balance: \(balance) \n Transactions: \(transactions)"
     }
 }
+
+extension Wallet {
+    func transaction(at index: Int) -> Transaction? {
+        guard (index < transactions.count) else {
+            return nil
+        }
+        return transactions[index]
+    }
+}
