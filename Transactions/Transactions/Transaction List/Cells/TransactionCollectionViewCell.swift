@@ -20,10 +20,10 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     static let nibName = "TransactionCollectionViewCell"
     static let cellIdentifier = "TransactionCellIdentifier"
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var sentLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var timeDateLabel: UILabel!
-    @IBOutlet var contentBackgroundView: UIView!
     @IBOutlet var detailContentView: UIView!
     @IBOutlet var horizontalLine: UIView!
     @IBOutlet var verticalLine: UIView!
@@ -33,11 +33,12 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentBackgroundView.layer.shadowColor = UIColor.black.cgColor
+//        contentBackgroundView.layer.shadowColor = UIColor.black.cgColor
     }
 
     var transaction: Transaction? {
         didSet {
+            scrollView.contentOffset = .zero
             updateColors()
             updateContent()
         }
@@ -45,12 +46,14 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     
     var presentation: TransactionPresentation = .list {
         didSet {
-            animatePresentationChange()
+            updateUI()
         }
     }
     
-    func animatePresentationChange() {
-        topSpaceConstraint.constant = presentation == .list ? 20 : 20
+    func updateUI() {
+        scrollView.isScrollEnabled = presentation == .detail
+        scrollView.isUserInteractionEnabled = presentation == .detail
+        topSpaceConstraint.constant = presentation == .list ? 25 : 40
         let detailContentAlpha: CGFloat = presentation == .detail ? 1.0 : 0.0
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
@@ -68,20 +71,20 @@ class TransactionCollectionViewCell: UICollectionViewCell {
             return
         }
         sentLabel.text = transaction.typeString
-        amountLabel.text = transaction.bitcoinString
+        amountLabel.text = transaction.amountString
         timeDateLabel.text = "\(transaction.dateString)\n\(transaction.timeString)"
     }
     
     func updateColors() {
         guard let transaction = self.transaction else {
-            contentBackgroundView.backgroundColor = Colors.background
+            backgroundColor = Colors.background
             return
         }
         switch(transaction.type) {
         case .sent:
-            contentBackgroundView.backgroundColor = Colors.sent
+            backgroundColor = Colors.sent
         case .received:
-            contentBackgroundView.backgroundColor = Colors.received
+            backgroundColor = Colors.received
         }
     }
 

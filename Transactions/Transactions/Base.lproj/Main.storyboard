@@ -34,8 +34,8 @@
         <scene sceneID="6Cc-I3-TbB">
             <objects>
                 <collectionViewController title="Transactions" id="H0f-HU-eUq" customClass="TransactionsViewController" customModule="Transactions" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CcB-rt-DIC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" dataMode="prototypes" id="CcB-rt-DIC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.18039215689999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="hYM-JY-dtm">
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="H0f-HU-eUq" id="S0y-J9-JvW"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Transactions" id="kss-qC-Q7t"/>
+                    <navigationItem key="navigationItem" title="Transactions" largeTitleDisplayMode="never" id="kss-qC-Q7t"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0C-9a-v6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

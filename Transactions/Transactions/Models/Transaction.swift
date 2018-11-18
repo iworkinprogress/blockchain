@@ -35,13 +35,6 @@ struct Transaction: Codable, CustomStringConvertible {
     }
 }
 
-// MARK: Math
-extension Transaction {
-    var bitcoins: Double {
-        return Double(amount) * 1e-8
-    }
-}
-
 // MARK: Dates
 extension Transaction {
     var date: Date {
@@ -49,29 +42,15 @@ extension Transaction {
     }
 }
 
-// MARK: Formatting
-extension Formatter {
-    static let avoidNotation: NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = 8
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter
-    }()
-}
 
-extension FloatingPoint {
-    var avoidNotation: String {
-        return Formatter.avoidNotation.string(for: self) ?? ""
-    }
-}
 
 extension Transaction {
     var typeString: String {
         return type == .sent ? "Sent" : "Received"
     }
     
-    var bitcoinString: String {
-        return "\(abs(bitcoins).avoidNotation) BTC"
+    var amountString: String {
+        return amount.toBitcoin.asString
     }
     
     var dateString: String {

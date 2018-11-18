@@ -28,6 +28,8 @@
 		24D31D77219FC9410009603F /* ErrorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D75219FC9410009603F /* ErrorCollectionViewCell.swift */; };
 		24D31D78219FC9410009603F /* ErrorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D76219FC9410009603F /* ErrorCollectionViewCell.xib */; };
 		24D31D7B219FD5FC0009603F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7A219FD5FC0009603F /* Colors.swift */; };
+		24D31D7E21A0F4990009603F /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
+		24D31D7F21A0F4990009603F /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		24D31D75219FC9410009603F /* ErrorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCollectionViewCell.swift; sourceTree = "<group>"; };
 		24D31D76219FC9410009603F /* ErrorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorCollectionViewCell.xib; sourceTree = "<group>"; };
 		24D31D7A219FD5FC0009603F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		24D31D7D21A0F4990009603F /* Bitcoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoins.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		24D31D21219F62030009603F /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				24D31D7C21A0F47E0009603F /* Extensions */,
 				24D31D79219FD5F10009603F /* Constants */,
 				24D31D54219F648B0009603F /* API */,
 				24D31D53219F64550009603F /* Models */,
@@ -199,6 +203,14 @@
 				24D31D7A219FD5FC0009603F /* Colors.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		24D31D7C21A0F47E0009603F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24D31D7D21A0F4990009603F /* Bitcoins.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D31D25219F62030009603F /* TransactionsViewController.swift in Sources */,
+				24D31D7E21A0F4990009603F /* Bitcoins.swift in Sources */,
 				24D31D7B219FD5FC0009603F /* Colors.swift in Sources */,
 				24D31D62219F7A840009603F /* Wallet.swift in Sources */,
 				24D31D77219FC9410009603F /* ErrorCollectionViewCell.swift in Sources */,
@@ -353,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D31D63219F7A840009603F /* Wallet.swift in Sources */,
+				24D31D7F21A0F4990009603F /* Bitcoins.swift in Sources */,
 				24D31D57219F64B50009603F /* BlockchainAPI.swift in Sources */,
 				24D31D64219FBBFD0009603F /* Transaction.swift in Sources */,
 				24D31D38219F62060009603F /* TransactionsTests.swift in Sources */,

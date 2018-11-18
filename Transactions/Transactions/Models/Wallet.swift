@@ -44,4 +44,8 @@ extension Wallet {
         }
         return transactions[index]
     }
+    
+    var balanceString: String {
+        return "\(balance.toBitcoin.asString)"
+    }
 }

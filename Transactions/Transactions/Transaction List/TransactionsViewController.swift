@@ -97,6 +97,7 @@ class TransactionsViewController: UICollectionViewController {
                 switch(result) {
                 case .success(let wallet):
                     self.state = .list(wallet)
+                    self.title = wallet.balanceString
                 case .failure(let error):
                     self.state = .error(error)
                 }
@@ -115,7 +116,6 @@ class TransactionsViewController: UICollectionViewController {
     
     @objc func zoomOut() {
         guard case .detail(let wallet, _) = state else { return }
-        
         navigationItem.rightBarButtonItem = nil
         collectionView.isPagingEnabled = false
         state = .list(wallet)
@@ -128,10 +128,13 @@ class TransactionsViewController: UICollectionViewController {
         switch(state) {
         case .error, .loading:
             layout = fullScreenLayout
+            navigationItem.largeTitleDisplayMode = .always
         case .detail:
             layout = fullScreenLayout
+            navigationItem.largeTitleDisplayMode = .never
         case .list(_):
             layout = listLayout
+            navigationItem.largeTitleDisplayMode = .always
         }
         collectionView.setCollectionViewLayout(layout, animated: animated)
         for cell in collectionView.visibleCells {
