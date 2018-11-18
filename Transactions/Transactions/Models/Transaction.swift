@@ -39,6 +39,15 @@ struct Transaction: Codable, CustomStringConvertible {
         type = amount > 0 ? .received : .sent
     }
     
+    init(timestamp: TimeInterval, amount: Satoshi, weight: Int64, size: Int64, fee: Satoshi) {
+        self.timestamp = timestamp
+        self.amount = amount
+        self.type = amount < 0 ? .sent : .received
+        self.weight = weight
+        self.size = size
+        self.fee = fee
+    }
+    
     var description: String {
         return "Amount: \(amount) at \(timestamp)"
     }

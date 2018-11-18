@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24922D8D21A1270300CB6CC1 /* BitcoinsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D8C21A1270300CB6CC1 /* BitcoinsTests.swift */; };
+		24922D8F21A1270A00CB6CC1 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D8E21A1270A00CB6CC1 /* WalletTests.swift */; };
+		24922D9121A1271200CB6CC1 /* TransactionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9021A1271200CB6CC1 /* TransactionsTests.swift */; };
+		24922D9321A1271D00CB6CC1 /* BlockchainAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9221A1271D00CB6CC1 /* BlockchainAPITests.swift */; };
+		24922D9521A128A700CB6CC1 /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
 		24D31D23219F62030009603F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D22219F62030009603F /* AppDelegate.swift */; };
 		24D31D25219F62030009603F /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D24219F62030009603F /* TransactionsViewController.swift */; };
 		24D31D28219F62030009603F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D26219F62030009603F /* LaunchScreen.storyboard */; };
 		24D31D2A219F62060009603F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D29219F62060009603F /* Assets.xcassets */; };
 		24D31D2D219F62060009603F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D2B219F62060009603F /* Main.storyboard */; };
-		24D31D38219F62060009603F /* TransactionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D37219F62060009603F /* TransactionsTests.swift */; };
 		24D31D43219F62060009603F /* TransactionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D42219F62060009603F /* TransactionsUITests.swift */; };
 		24D31D56219F64B50009603F /* BlockchainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D55219F64B50009603F /* BlockchainAPI.swift */; };
-		24D31D57219F64B50009603F /* BlockchainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D55219F64B50009603F /* BlockchainAPI.swift */; };
-		24D31D5E219F74910009603F /* TransactionsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D5D219F74910009603F /* TransactionsHeader.swift */; };
 		24D31D60219F751D0009603F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D5F219F751D0009603F /* Transaction.swift */; };
 		24D31D62219F7A840009603F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D61219F7A840009603F /* Wallet.swift */; };
-		24D31D63219F7A840009603F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D61219F7A840009603F /* Wallet.swift */; };
-		24D31D64219FBBFD0009603F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D5F219F751D0009603F /* Transaction.swift */; };
 		24D31D6B219FC3C00009603F /* TransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D69219FC3C00009603F /* TransactionCollectionViewCell.swift */; };
 		24D31D6D219FC3C00009603F /* TransactionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D6A219FC3C00009603F /* TransactionCollectionViewCell.xib */; };
 		24D31D71219FC7DC0009603F /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D6F219FC7DC0009603F /* LoadingCollectionViewCell.swift */; };
@@ -28,8 +28,6 @@
 		24D31D77219FC9410009603F /* ErrorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D75219FC9410009603F /* ErrorCollectionViewCell.swift */; };
 		24D31D78219FC9410009603F /* ErrorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D76219FC9410009603F /* ErrorCollectionViewCell.xib */; };
 		24D31D7B219FD5FC0009603F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7A219FD5FC0009603F /* Colors.swift */; };
-		24D31D7E21A0F4990009603F /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
-		24D31D7F21A0F4990009603F /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24922D8C21A1270300CB6CC1 /* BitcoinsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinsTests.swift; sourceTree = "<group>"; };
+		24922D8E21A1270A00CB6CC1 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		24922D9021A1271200CB6CC1 /* TransactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTests.swift; sourceTree = "<group>"; };
+		24922D9221A1271D00CB6CC1 /* BlockchainAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainAPITests.swift; sourceTree = "<group>"; };
 		24D31D1F219F62030009603F /* Transactions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transactions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D31D22219F62030009603F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D31D24219F62030009603F /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
@@ -58,13 +60,11 @@
 		24D31D2C219F62060009603F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24D31D2E219F62060009603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D31D33219F62060009603F /* TransactionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24D31D37219F62060009603F /* TransactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTests.swift; sourceTree = "<group>"; };
 		24D31D39219F62060009603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D31D3E219F62060009603F /* TransactionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransactionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D31D42219F62060009603F /* TransactionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsUITests.swift; sourceTree = "<group>"; };
 		24D31D44219F62060009603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D31D55219F64B50009603F /* BlockchainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainAPI.swift; sourceTree = "<group>"; };
-		24D31D5D219F74910009603F /* TransactionsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsHeader.swift; sourceTree = "<group>"; };
 		24D31D5F219F751D0009603F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		24D31D61219F7A840009603F /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		24D31D69219FC3C00009603F /* TransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -142,8 +142,11 @@
 		24D31D36219F62060009603F /* TransactionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				24D31D37219F62060009603F /* TransactionsTests.swift */,
 				24D31D39219F62060009603F /* Info.plist */,
+				24922D8C21A1270300CB6CC1 /* BitcoinsTests.swift */,
+				24922D8E21A1270A00CB6CC1 /* WalletTests.swift */,
+				24922D9021A1271200CB6CC1 /* TransactionsTests.swift */,
+				24922D9221A1271D00CB6CC1 /* BlockchainAPITests.swift */,
 			);
 			path = TransactionsTests;
 			sourceTree = "<group>";
@@ -162,7 +165,6 @@
 			children = (
 				24D31D68219FC37C0009603F /* Cells */,
 				24D31D24219F62030009603F /* TransactionsViewController.swift */,
-				24D31D5D219F74910009603F /* TransactionsHeader.swift */,
 			);
 			path = "Transaction List";
 			sourceTree = "<group>";
@@ -348,14 +350,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				24D31D25219F62030009603F /* TransactionsViewController.swift in Sources */,
-				24D31D7E21A0F4990009603F /* Bitcoins.swift in Sources */,
+				24922D9521A128A700CB6CC1 /* Bitcoins.swift in Sources */,
 				24D31D7B219FD5FC0009603F /* Colors.swift in Sources */,
 				24D31D62219F7A840009603F /* Wallet.swift in Sources */,
 				24D31D77219FC9410009603F /* ErrorCollectionViewCell.swift in Sources */,
 				24D31D60219F751D0009603F /* Transaction.swift in Sources */,
 				24D31D56219F64B50009603F /* BlockchainAPI.swift in Sources */,
 				24D31D23219F62030009603F /* AppDelegate.swift in Sources */,
-				24D31D5E219F74910009603F /* TransactionsHeader.swift in Sources */,
 				24D31D71219FC7DC0009603F /* LoadingCollectionViewCell.swift in Sources */,
 				24D31D6B219FC3C00009603F /* TransactionCollectionViewCell.swift in Sources */,
 			);
@@ -365,11 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24D31D63219F7A840009603F /* Wallet.swift in Sources */,
-				24D31D7F21A0F4990009603F /* Bitcoins.swift in Sources */,
-				24D31D57219F64B50009603F /* BlockchainAPI.swift in Sources */,
-				24D31D64219FBBFD0009603F /* Transaction.swift in Sources */,
-				24D31D38219F62060009603F /* TransactionsTests.swift in Sources */,
+				24922D8F21A1270A00CB6CC1 /* WalletTests.swift in Sources */,
+				24922D9321A1271D00CB6CC1 /* BlockchainAPITests.swift in Sources */,
+				24922D8D21A1270300CB6CC1 /* BitcoinsTests.swift in Sources */,
+				24922D9121A1271200CB6CC1 /* TransactionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

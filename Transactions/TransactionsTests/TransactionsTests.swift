@@ -1,34 +1,43 @@
 //
-//  TransactionsTests.swift
+//  Transactions.swift
 //  TransactionsTests
 //
-//  Created by Steven Baughman on 11/16/18.
+//  Created by Steven Baughman on 11/17/18.
 //  Copyright © 2018 Blockchain. All rights reserved.
 //
 
 import XCTest
 @testable import Transactions
 
-class TransactionsTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class Transactions: XCTestCase {
+    
+    let receivedTransaction = Transaction(
+        timestamp: 1542518421,
+        amount: 987654321,
+        weight: 5874,
+        size: 281,
+        fee: 82)
+    
+    let sentTransaction = Transaction(
+        timestamp: 1542518421,
+        amount: -555555,
+        weight: 5874,
+        size: 281,
+        fee: 82)
+    
+    func testSentType() {
+        XCTAssertTrue(sentTransaction.type == .sent)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testReceivedType() {
+        XCTAssertTrue(receivedTransaction.type == .received)
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testDateString() {
+        XCTAssertTrue(receivedTransaction.dateString == "11/18/18")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testTimeString() {
+        XCTAssertTrue(receivedTransaction.timeString == "12:20 AM")
     }
-
 }
