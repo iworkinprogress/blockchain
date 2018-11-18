@@ -10,7 +10,7 @@ import UIKit
 
 private let walletAddress = "xpub6CfLQa8fLgtouvLxrb8EtvjbXfoC1yqzH6YbTJw4dP7srt523AhcMV8Uh4K3TWSHz9oDWmn9MuJogzdGU3ncxkBsAC9wFBLmFrWT9Ek81kQ"
 
-private let transactionCellHeight: CGFloat = 100.0
+private let transactionCellHeight: CGFloat = 90.0
 
 class TransactionsViewController: UICollectionViewController {
     
@@ -29,7 +29,28 @@ class TransactionsViewController: UICollectionViewController {
             case .list, .detail:
                 updateLayout(animated: true)
             }
+            title = navigationTitle
             collectionView.reloadData()
+        }
+    }
+    
+    // MARK: Computed Properties
+    var currentPage: CGFloat {
+        if(collectionView.collectionViewLayout == listLayout) {
+            return collectionView.contentOffset.y / listLayout.itemSize.height
+        } else {
+            return collectionView.contentOffset.x / fullScreenLayout.itemSize.width
+        }
+    }
+    
+    var navigationTitle: String {
+        switch(state) {
+        case .loading:
+            return "Loading"
+        case .list(let wallet), .detail(let wallet, _):
+            return wallet.balanceString
+        case .error:
+            return "Error"
         }
     }
     
@@ -43,31 +64,26 @@ class TransactionsViewController: UICollectionViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = navigationTitle
         navigationItem.backBarButtonItem = nil
+        collectionView.backgroundColor = Colors.black
         setupCollectionView()
         loadWallet()
     }
     
+    // Called when rotating
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let page = currentPage()
+        let page = currentPage
         coordinator.animate(alongsideTransition: { (context) in
             self.updateItemSizes()
             // Reposition contentOffset so the cell on screen remains on screen
             if(self.collectionView.collectionViewLayout == self.listLayout) {
                 // Not working well in list mode. But list mode seems to work fine as is
-//                self.collectionView.contentOffset = CGPoint(x: 0, y: page * size.height)
+                // self.collectionView.contentOffset = CGPoint(x: 0, y: page * size.height)
             } else {
-                self.collectionView.setContentOffset(CGPoint(x: page * size.width, y: 0), animated: true)
+                self.collectionView.contentOffset = CGPoint(x: page * size.width, y: 0)
             }
         }) { (context) in
-        }
-    }
-    
-    func currentPage() -> CGFloat {
-        if(collectionView.collectionViewLayout == listLayout) {
-            return collectionView.contentOffset.y / listLayout.itemSize.height
-        } else {
-            return collectionView.contentOffset.x / fullScreenLayout.itemSize.width
         }
     }
     
@@ -98,7 +114,6 @@ class TransactionsViewController: UICollectionViewController {
                 switch(result) {
                 case .success(let wallet):
                     self.state = .list(wallet)
-                    self.title = wallet.balanceString
                 case .failure(let error):
                     self.state = .error(error)
                 }
@@ -107,7 +122,6 @@ class TransactionsViewController: UICollectionViewController {
     }
     
     //MARK: Actions
-    
     func zoomIn(to transaction: Transaction) {
         guard case .list(let wallet) = state else { return }
         navigationItem.rightBarButtonItem = closeButton
@@ -123,7 +137,6 @@ class TransactionsViewController: UICollectionViewController {
     }
     
     //MARK: Layouts
-    
     func updateLayout(animated: Bool) {
         let layout: UICollectionViewFlowLayout
         switch(state) {
@@ -156,7 +169,7 @@ class TransactionsViewController: UICollectionViewController {
     func updateFullScreenItemSize() {
         fullScreenLayout.itemSize = CGSize(
             width: view.bounds.size.width,
-            height:view.safeAreaLayoutGuide.layoutFrame.size.height)
+            height: view.safeAreaLayoutGuide.layoutFrame.size.height)
         fullScreenLayout.invalidateLayout()
     }
     
@@ -169,7 +182,7 @@ class TransactionsViewController: UICollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(
             width: view.bounds.size.width,
-            height:view.safeAreaLayoutGuide.layoutFrame.size.height)
+            height: view.safeAreaLayoutGuide.layoutFrame.size.height)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -180,7 +193,7 @@ class TransactionsViewController: UICollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(
             width: view.bounds.size.width,
-            height:transactionCellHeight)
+            height: transactionCellHeight)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .vertical
@@ -211,8 +224,11 @@ class TransactionsViewController: UICollectionViewController {
             return transactionCell
         case .loading:
             return collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCollectionViewCell.cellIdentifier, for: indexPath)
-        case .error:
-            return collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.cellIdentifier, for: indexPath)
+        case .error(let error):
+            let errorCell =  collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.cellIdentifier, for: indexPath) as! ErrorCollectionViewCell
+            errorCell.error = error
+            errorCell.delegate = self
+            return errorCell
         }
     }
     
@@ -233,5 +249,13 @@ class TransactionsViewController: UICollectionViewController {
             break
         }
         
+    }
+}
+
+// ErrorCellDelegate
+extension TransactionsViewController: ErrorCellDelegate {
+    func retryLoadingData() {
+        state = .loading
+        loadWallet()
     }
 }

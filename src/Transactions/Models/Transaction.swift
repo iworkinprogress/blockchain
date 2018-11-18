@@ -17,6 +17,7 @@ struct Transaction: Codable {
     let timestamp: TimeInterval
     let amount: Satoshi
     let type: TransactionType
+    let hash: String
     let weight: Int64
     let size: Int64
     let fee: Satoshi
@@ -24,6 +25,7 @@ struct Transaction: Codable {
     enum CodingKeys: String, CodingKey {
         case timestamp = "time"
         case amount = "result"
+        case hash
         case weight
         case size
         case fee
@@ -33,16 +35,18 @@ struct Transaction: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
         amount = try container.decode(Satoshi.self, forKey: .amount)
+        type = amount > 0 ? .received : .sent
+        hash = try container.decode(String.self, forKey: .hash)
         weight = try container.decode(Int64.self, forKey: .weight)
         size = try container.decode(Int64.self, forKey: .size)
         fee = try container.decode(Satoshi.self, forKey: .fee)
-        type = amount > 0 ? .received : .sent
     }
     
-    init(timestamp: TimeInterval, amount: Satoshi, weight: Int64, size: Int64, fee: Satoshi) {
+    init(timestamp: TimeInterval, amount: Satoshi, hash: String, weight: Int64, size: Int64, fee: Satoshi) {
         self.timestamp = timestamp
         self.amount = amount
         self.type = amount < 0 ? .sent : .received
+        self.hash = hash
         self.weight = weight
         self.size = size
         self.fee = fee

@@ -14,6 +14,7 @@ class Transactions: XCTestCase {
     let receivedTransaction = Transaction(
         timestamp: 1542518421,
         amount: 987654321,
+        hash: "85ec49c884f9ebce4a713032dbf73834ab756f79c2e02294450fe92f8a817d25",
         weight: 5874,
         size: 281,
         fee: 82)
@@ -21,6 +22,7 @@ class Transactions: XCTestCase {
     let sentTransaction = Transaction(
         timestamp: 1542518421,
         amount: -555555,
+        hash: "85ec49c884f9ebce4a713032dbf73834ab756f79c2e02294450fe92f8a817d25",
         weight: 5874,
         size: 281,
         fee: 82)
@@ -69,6 +71,7 @@ class Transactions: XCTestCase {
             XCTAssertTrue(transaction.size == 817)
             XCTAssertTrue(transaction.type == .sent)
             XCTAssertTrue(transaction.timestamp == 1542205548)
+            XCTAssertTrue(transaction.hash == "85ec49c884f9ebce4a713032dbf73834ab756f79c2e02294450fe92f8a817d25")
         } catch {
             XCTFail()
         }

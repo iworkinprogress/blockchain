@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ErrorCellIdentifier" id="gTV-IL-0wX" customClass="ErrorCollectionViewCell" customModule="Transactions" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="320"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="334" height="320"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-x8-wbZ">
+                        <rect key="frame" x="50" y="115" width="234" height="90"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-0S-UAI">
+                                <rect key="frame" x="0.0" y="0.0" width="234" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c49-aU-dom">
+                                <rect key="frame" x="70" y="49" width="94" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <state key="normal" title="Try Again"/>
+                                <connections>
+                                    <action selector="retryLoadingData" destination="gTV-IL-0wX" eventType="touchUpInside" id="dLU-Ou-mqF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jy0-0S-UAI" firstAttribute="top" secondItem="jVZ-x8-wbZ" secondAttribute="top" id="KlC-0f-Drg"/>
+                            <constraint firstItem="c49-aU-dom" firstAttribute="centerX" secondItem="Jy0-0S-UAI" secondAttribute="centerX" id="Kso-U4-8vd"/>
+                            <constraint firstItem="c49-aU-dom" firstAttribute="top" secondItem="Jy0-0S-UAI" secondAttribute="bottom" constant="20" id="U1H-XI-vWX"/>
+                            <constraint firstAttribute="trailing" secondItem="Jy0-0S-UAI" secondAttribute="trailing" id="VxJ-Yt-XC7"/>
+                            <constraint firstAttribute="bottom" secondItem="c49-aU-dom" secondAttribute="bottom" id="sQX-Zr-W6i"/>
+                            <constraint firstItem="Jy0-0S-UAI" firstAttribute="leading" secondItem="jVZ-x8-wbZ" secondAttribute="leading" id="xvD-rV-Cgi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="jVZ-x8-wbZ" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="50" id="H4R-hc-bby"/>
+                <constraint firstItem="jVZ-x8-wbZ" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="SXM-fm-w5p"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="jVZ-x8-wbZ" secondAttribute="trailing" constant="50" id="wbB-Do-X9k"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="334" height="320"/>
+            <connections>
+                <outlet property="button" destination="c49-aU-dom" id="qRR-FE-NJX"/>
+                <outlet property="label" destination="Jy0-0S-UAI" id="c5r-UK-VOS"/>
+            </connections>
+            <point key="canvasLocation" x="364.80000000000001" y="274.36281859070465"/>
+        </collectionViewCell>
+    </objects>
+</document>

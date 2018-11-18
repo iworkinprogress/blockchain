@@ -24,6 +24,7 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var sentLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var timeDateLabel: UILabel!
+    @IBOutlet var hashLabel: UILabel!
     @IBOutlet var weightLabel: UILabel!
     @IBOutlet var sizeLabel: UILabel!
     @IBOutlet var feeLabel: UILabel!
@@ -32,12 +33,9 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var verticalLine: UIView!
     
     // Autolayout Constraints
+    // Can be used to adjust top padding in list and detail presentations
+    // Not currently used
     @IBOutlet var topSpaceConstraint: NSLayoutConstraint!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        contentBackgroundView.layer.shadowColor = UIColor.black.cgColor
-    }
 
     var transaction: Transaction? {
         didSet {
@@ -52,11 +50,13 @@ class TransactionCollectionViewCell: UICollectionViewCell {
             updatePresentation()
         }
     }
+    override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+    }
     
     func updatePresentation() {
         scrollView.isScrollEnabled = presentation == .detail
         scrollView.isUserInteractionEnabled = presentation == .detail
-        topSpaceConstraint.constant = presentation == .list ? 25 : 50
         let detailContentAlpha: CGFloat = presentation == .detail ? 1.0 : 0.0
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
@@ -70,6 +70,7 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         sentLabel.text = transaction?.typeString
         amountLabel.text = transaction?.amountString
         timeDateLabel.text = transaction?.dateTimeString
+        hashLabel.text = transaction?.hash
         weightLabel.text = transaction?.weightString
         sizeLabel.text = transaction?.sizeString
         feeLabel.text = transaction?.freeString
@@ -77,18 +78,19 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     
     func updateColors() {
         guard let transaction = self.transaction else {
-            backgroundColor = Colors.background
+            backgroundColor = Colors.smoke
             return
         }
         switch(transaction.type) {
         case .sent:
-            backgroundColor = Colors.sent
+            backgroundColor = Colors.red
         case .received:
-            backgroundColor = Colors.received
+            backgroundColor = Colors.green
         }
     }
 
     //MARK: Lifecycle
+    // This is needed to ensure that cells animate between layouts
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         layoutIfNeeded()
     }
