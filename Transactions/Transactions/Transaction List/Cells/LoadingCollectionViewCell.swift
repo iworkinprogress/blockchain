@@ -3,7 +3,7 @@
 //  Transactions
 //
 //  Created by Steven Baughman on 11/16/18.
-//  Copyright © 2018 Blockchain. All rights reserved.
+//  Copyright © 2018 Steven Baughman. All rights reserved.
 //
 
 import UIKit

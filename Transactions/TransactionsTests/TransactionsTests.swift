@@ -3,7 +3,7 @@
 //  TransactionsTests
 //
 //  Created by Steven Baughman on 11/17/18.
-//  Copyright © 2018 Blockchain. All rights reserved.
+//  Copyright © 2018 Steven Baughman. All rights reserved.
 //
 
 import XCTest
