@@ -8,10 +8,6 @@
 
 import UIKit
 
-private let walletAddress = "xpub6CfLQa8fLgtouvLxrb8EtvjbXfoC1yqzH6YbTJw4dP7srt523AhcMV8Uh4K3TWSHz9oDWmn9MuJogzdGU3ncxkBsAC9wFBLmFrWT9Ek81kQ"
-
-private let transactionCellHeight: CGFloat = 90.0
-
 class TransactionsViewController: UICollectionViewController {
     
     enum State {
@@ -109,7 +105,7 @@ class TransactionsViewController: UICollectionViewController {
     // Attempt to load a wallet from BlockchainAPI
     // - Will update state with either a success or failure
     func loadWallet() {
-        BlockchainAPI.getTransactions(for: walletAddress) { (result) in
+        BlockchainAPI.getTransactions(for: WalletAddresses.defaultAddress) { (result) in
             DispatchQueue.main.async {
                 switch(result) {
                 case .success(let wallet):
@@ -174,7 +170,7 @@ class TransactionsViewController: UICollectionViewController {
     }
     
     func updateListItemSize() {
-        listLayout.itemSize = CGSize(width: view.bounds.size.width, height:transactionCellHeight)
+        listLayout.itemSize = CGSize(width: view.bounds.size.width, height: Cells.Heights.list)
         listLayout.invalidateLayout()
     }
     
@@ -193,7 +189,7 @@ class TransactionsViewController: UICollectionViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(
             width: view.bounds.size.width,
-            height: transactionCellHeight)
+            height: Cells.Heights.list)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .vertical

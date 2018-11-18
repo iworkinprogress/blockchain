@@ -12,6 +12,8 @@
 		24922D9121A1271200CB6CC1 /* TransactionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9021A1271200CB6CC1 /* TransactionsTests.swift */; };
 		24922D9321A1271D00CB6CC1 /* BlockchainAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9221A1271D00CB6CC1 /* BlockchainAPITests.swift */; };
 		24922D9521A128A700CB6CC1 /* Bitcoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D7D21A0F4990009603F /* Bitcoins.swift */; };
+		24922D9721A2013100CB6CC1 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9621A2013100CB6CC1 /* Cells.swift */; };
+		24922D9921A2013D00CB6CC1 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24922D9821A2013D00CB6CC1 /* Strings.swift */; };
 		24D31D23219F62030009603F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D22219F62030009603F /* AppDelegate.swift */; };
 		24D31D25219F62030009603F /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31D24219F62030009603F /* TransactionsViewController.swift */; };
 		24D31D28219F62030009603F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D31D26219F62030009603F /* LaunchScreen.storyboard */; };
@@ -52,6 +54,8 @@
 		24922D8E21A1270A00CB6CC1 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		24922D9021A1271200CB6CC1 /* TransactionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTests.swift; sourceTree = "<group>"; };
 		24922D9221A1271D00CB6CC1 /* BlockchainAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainAPITests.swift; sourceTree = "<group>"; };
+		24922D9621A2013100CB6CC1 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		24922D9821A2013D00CB6CC1 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		24D31D1F219F62030009603F /* Transactions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transactions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D31D22219F62030009603F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D31D24219F62030009603F /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				24D31D7A219FD5FC0009603F /* Colors.swift */,
+				24922D9621A2013100CB6CC1 /* Cells.swift */,
+				24922D9821A2013D00CB6CC1 /* Strings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -357,7 +363,9 @@
 				24D31D60219F751D0009603F /* Transaction.swift in Sources */,
 				24D31D56219F64B50009603F /* BlockchainAPI.swift in Sources */,
 				24D31D23219F62030009603F /* AppDelegate.swift in Sources */,
+				24922D9721A2013100CB6CC1 /* Cells.swift in Sources */,
 				24D31D71219FC7DC0009603F /* LoadingCollectionViewCell.swift in Sources */,
+				24922D9921A2013D00CB6CC1 /* Strings.swift in Sources */,
 				24D31D6B219FC3C00009603F /* TransactionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

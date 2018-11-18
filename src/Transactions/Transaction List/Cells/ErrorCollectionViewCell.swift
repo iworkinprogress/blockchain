@@ -28,7 +28,7 @@ class ErrorCollectionViewCell: UICollectionViewCell {
             let message: String
             switch(error) {
             case .loadData:
-                message = "Unable to load data"
+                message = ErrorStrings.loadData
             case .parseJson(let error):
                 message = error.localizedDescription
             case .unknownError(let error):
