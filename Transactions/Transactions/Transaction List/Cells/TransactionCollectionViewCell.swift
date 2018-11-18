@@ -24,6 +24,9 @@ class TransactionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var sentLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var timeDateLabel: UILabel!
+    @IBOutlet var weightLabel: UILabel!
+    @IBOutlet var sizeLabel: UILabel!
+    @IBOutlet var feeLabel: UILabel!
     @IBOutlet var detailContentView: UIView!
     @IBOutlet var horizontalLine: UIView!
     @IBOutlet var verticalLine: UIView!
@@ -40,20 +43,20 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         didSet {
             scrollView.contentOffset = .zero
             updateColors()
-            updateContent()
+            updateLabels()
         }
     }
     
     var presentation: TransactionPresentation = .list {
         didSet {
-            updateUI()
+            updatePresentation()
         }
     }
     
-    func updateUI() {
+    func updatePresentation() {
         scrollView.isScrollEnabled = presentation == .detail
         scrollView.isUserInteractionEnabled = presentation == .detail
-        topSpaceConstraint.constant = presentation == .list ? 25 : 40
+        topSpaceConstraint.constant = presentation == .list ? 25 : 50
         let detailContentAlpha: CGFloat = presentation == .detail ? 1.0 : 0.0
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
@@ -63,16 +66,13 @@ class TransactionCollectionViewCell: UICollectionViewCell {
         verticalLine.alpha = presentation == .detail ? lineOpacity : 0.0
     }
     
-    func updateContent() {
-        guard let transaction = self.transaction else {
-            sentLabel.text = nil
-            amountLabel.text = nil
-            timeDateLabel.text = nil
-            return
-        }
-        sentLabel.text = transaction.typeString
-        amountLabel.text = transaction.amountString
-        timeDateLabel.text = "\(transaction.dateString)\n\(transaction.timeString)"
+    func updateLabels() {
+        sentLabel.text = transaction?.typeString
+        amountLabel.text = transaction?.amountString
+        timeDateLabel.text = transaction?.dateTimeString
+        weightLabel.text = transaction?.weightString
+        sizeLabel.text = transaction?.sizeString
+        feeLabel.text = transaction?.freeString
     }
     
     func updateColors() {

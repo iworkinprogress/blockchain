@@ -51,9 +51,10 @@ class TransactionsViewController: UICollectionViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let page = currentPage()
         coordinator.animate(alongsideTransition: { (context) in
-            self.updateItemSize()
+            self.updateItemSizes()
+            // Reposition contentOffset so the cell on screen remains on screen
             if(self.collectionView.collectionViewLayout == self.listLayout) {
-                // Not working well in list mode. But list mode seems ot work fine as is
+                // Not working well in list mode. But list mode seems to work fine as is
 //                self.collectionView.contentOffset = CGPoint(x: 0, y: page * size.height)
             } else {
                 self.collectionView.setContentOffset(CGPoint(x: page * size.width, y: 0), animated: true)
@@ -71,7 +72,7 @@ class TransactionsViewController: UICollectionViewController {
     }
     
     override func viewSafeAreaInsetsDidChange() {
-        updateItemSize()
+        updateItemSizes()
     }
     
     // MARK: Configuration
@@ -129,12 +130,15 @@ class TransactionsViewController: UICollectionViewController {
         case .error, .loading:
             layout = fullScreenLayout
             navigationItem.largeTitleDisplayMode = .always
+            updateFullScreenItemSize()
         case .detail:
             layout = fullScreenLayout
             navigationItem.largeTitleDisplayMode = .never
+            updateFullScreenItemSize()
         case .list(_):
             layout = listLayout
             navigationItem.largeTitleDisplayMode = .always
+            updateListItemSize()
         }
         collectionView.setCollectionViewLayout(layout, animated: animated)
         for cell in collectionView.visibleCells {
@@ -144,11 +148,19 @@ class TransactionsViewController: UICollectionViewController {
         }
     }
     
-    func updateItemSize() {
+    func updateItemSizes() {
+        updateFullScreenItemSize()
+        updateListItemSize()
+    }
+    
+    func updateFullScreenItemSize() {
         fullScreenLayout.itemSize = CGSize(
             width: view.bounds.size.width,
             height:view.safeAreaLayoutGuide.layoutFrame.size.height)
         fullScreenLayout.invalidateLayout()
+    }
+    
+    func updateListItemSize() {
         listLayout.itemSize = CGSize(width: view.bounds.size.width, height:transactionCellHeight)
         listLayout.invalidateLayout()
     }

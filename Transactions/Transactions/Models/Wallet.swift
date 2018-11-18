@@ -9,7 +9,7 @@
 import Foundation
 
 struct Wallet: Codable, CustomStringConvertible {
-    let balance: Int64
+    let balance: Satoshi
     let transactions: [Transaction]
     
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct Wallet: Codable, CustomStringConvertible {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let wallet = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .wallet)
-        self.balance = try wallet.decode(Int64.self, forKey: .balance)
+        self.balance = try wallet.decode(Satoshi.self, forKey: .balance)
         self.transactions = try container.decode([Transaction].self, forKey: .transactions)
     }
     

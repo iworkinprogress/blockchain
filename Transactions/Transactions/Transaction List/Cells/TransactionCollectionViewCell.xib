@@ -186,12 +186,15 @@
             <connections>
                 <outlet property="amountLabel" destination="k8J-zn-PAP" id="8J9-N2-cRe"/>
                 <outlet property="detailContentView" destination="2sC-Ud-mBy" id="w8J-Cx-3hZ"/>
+                <outlet property="feeLabel" destination="01D-1f-jZk" id="5KS-6B-Qy5"/>
                 <outlet property="horizontalLine" destination="B6k-kl-vm1" id="PPh-EA-jVh"/>
                 <outlet property="scrollView" destination="MZB-pz-5qw" id="QWk-jj-cG3"/>
                 <outlet property="sentLabel" destination="JsT-6A-BTf" id="dvE-st-u0O"/>
+                <outlet property="sizeLabel" destination="aZQ-sZ-5FR" id="DAl-Tv-d0l"/>
                 <outlet property="timeDateLabel" destination="Z34-DE-ewP" id="iiL-ol-lZD"/>
                 <outlet property="topSpaceConstraint" destination="oTJ-Hp-cJ9" id="MAP-yW-oQ3"/>
                 <outlet property="verticalLine" destination="4sX-a4-1ct" id="6ka-oe-eCP"/>
+                <outlet property="weightLabel" destination="2xn-Ja-FW8" id="1Gl-Lh-Vx9"/>
             </connections>
             <point key="canvasLocation" x="740.79999999999995" y="372.86356821589209"/>
         </collectionViewCell>

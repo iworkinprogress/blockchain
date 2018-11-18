@@ -15,18 +15,27 @@ enum TransactionType: String {
 
 struct Transaction: Codable, CustomStringConvertible {
     let timestamp: TimeInterval
-    let amount: Int64
+    let amount: Satoshi
     let type: TransactionType
+    let weight: Int64
+    let size: Int64
+    let fee: Satoshi
     
     enum CodingKeys: String, CodingKey {
         case timestamp = "time"
         case amount = "result"
+        case weight
+        case size
+        case fee
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
-        amount = try container.decode(Int64.self, forKey: .amount)
+        amount = try container.decode(Satoshi.self, forKey: .amount)
+        weight = try container.decode(Int64.self, forKey: .weight)
+        size = try container.decode(Int64.self, forKey: .size)
+        fee = try container.decode(Satoshi.self, forKey: .fee)
         type = amount > 0 ? .received : .sent
     }
     
@@ -43,7 +52,7 @@ extension Transaction {
 }
 
 
-
+// MARK: Strings
 extension Transaction {
     var typeString: String {
         return type == .sent ? "Sent" : "Received"
@@ -53,15 +62,42 @@ extension Transaction {
         return amount.toBitcoin.asString
     }
     
+    var weightString: String {
+        return "\(weight)"
+    }
+    
+    var sizeString: String {
+        return "\(size)"
+    }
+    
+    var freeString: String {
+        return fee.toBitcoin.asString
+    }
+    
     var dateString: String {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "M/dd/yy"
-        return dateformatter.string(from: date)
+        return Transaction.dateFormatter.string(from: date)
     }
     
     var timeString: String {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "h:mm a"
-        return dateformatter.string(from: date)
+        return Transaction.timeFormatter.string(from: date)
     }
+    
+    var dateTimeString: String {
+        return "\(dateString)\n\(timeString)"
+    }
+}
+
+// MARK: Formatters
+extension Transaction {
+    static var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }()
+    
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/dd/yy"
+        return formatter
+    }()
 }
