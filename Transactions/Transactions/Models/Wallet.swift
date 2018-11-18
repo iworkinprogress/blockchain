@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Wallet: Codable, CustomStringConvertible {
+struct Wallet: Codable {
     let balance: Satoshi
     let transactions: [Transaction]
     
@@ -30,10 +30,6 @@ struct Wallet: Codable, CustomStringConvertible {
         var wallet = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .wallet)
         try wallet.encode(self.balance, forKey: .balance)
         try container.encode(self.transactions, forKey: .transactions)
-    }
-    
-    var description: String {
-        return "Balance: \(balance) \n Transactions: \(transactions)"
     }
 }
 

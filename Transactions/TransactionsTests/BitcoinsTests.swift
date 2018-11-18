@@ -23,19 +23,25 @@ class BitcoinTests: XCTestCase {
         XCTAssertTrue(bitcoin == 0.00000013)
     }
     
+    func testLargeSatoshiToBitcoinConversion() {
+        let satoshi: Satoshi = 888777666555444
+        let bitcoin = satoshi.toBitcoin
+        XCTAssertTrue(bitcoin == 8887776.66555444)
+    }
+    
     func testBitcoinString() {
         let satoshi: Satoshi = 987654321
         let bitcoin = satoshi.toBitcoin
         XCTAssertTrue(bitcoin.asString == "9.87654321 BTC")
     }
     
-    func testBitcoinSmallString() {
+    func testSmallBitcoinString() {
         let satoshi: Satoshi = 1
         let bitcoin = satoshi.toBitcoin
         XCTAssertTrue(bitcoin.asString == "0.00000001 BTC")
     }
     
-    func testBitcoinLargeString() {
+    func testLargeBitcoinString() {
         let satoshi: Satoshi = 9876543212345
         let bitcoin = satoshi.toBitcoin
         XCTAssertTrue(bitcoin.asString == "98,765.43212345 BTC")

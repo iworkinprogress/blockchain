@@ -13,7 +13,7 @@ enum TransactionType: String {
     case received
 }
 
-struct Transaction: Codable, CustomStringConvertible {
+struct Transaction: Codable {
     let timestamp: TimeInterval
     let amount: Satoshi
     let type: TransactionType
@@ -46,10 +46,6 @@ struct Transaction: Codable, CustomStringConvertible {
         self.weight = weight
         self.size = size
         self.fee = fee
-    }
-    
-    var description: String {
-        return "Amount: \(amount) at \(timestamp)"
     }
 }
 
