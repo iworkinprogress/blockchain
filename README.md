@@ -8,7 +8,7 @@ Open the Xcode project and build. No 3rd party libraries are used.
 
 # Description
 
-Transaction data is loaded from a GET request to the Blockchain API. This JSON is decoded using two structs:
+Transaction data is loaded from a GET request to the [Blockchain API](https://www.blockchain.com/api). This JSON is decoded using two structs:
 
 `Wallet`
 - Current balance
