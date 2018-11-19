@@ -33,9 +33,9 @@ class TransactionsViewController: UICollectionViewController {
     // MARK: Computed Properties
     var currentPage: CGFloat {
         if(collectionView.collectionViewLayout == listLayout) {
-            return collectionView.contentOffset.y / listLayout.itemSize.height
+            return round(collectionView.contentOffset.y / listLayout.itemSize.height)
         } else {
-            return collectionView.contentOffset.x / fullScreenLayout.itemSize.width
+            return round(collectionView.contentOffset.x / fullScreenLayout.itemSize.width)
         }
     }
     
@@ -116,7 +116,7 @@ class TransactionsViewController: UICollectionViewController {
     }
     
     //MARK: Actions
-    func zoomIn(to transaction: Transaction) {
+    func zoomIn() {
         guard case .list(let wallet) = state else { return }
         navigationItem.rightBarButtonItem = closeButton
         collectionView.isPagingEnabled = true
@@ -226,12 +226,22 @@ class TransactionsViewController: UICollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        switch(state) {
+        case .loading, .error:
+            return .zero
+        case .list:
+            return proposedContentOffset
+        case .detail:
+            return CGPoint(x: proposedContentOffset.x, y: 0)
+        }
+    }
+    
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch(state) {
-        case .list(let wallet):
-            guard let transaction = wallet.transaction(at: indexPath.row) else { return }
-            zoomIn(to: transaction)
+        case .list:
+            zoomIn()
             if let cell = collectionView.cellForItem(at: indexPath) {
                 // Make the selected cell the top layer
                 // This improves animation clarity
