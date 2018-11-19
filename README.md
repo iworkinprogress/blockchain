@@ -1,10 +1,10 @@
-# Blockchain
+# Blockchain Transactions
 
-View a list of wallet balance and transactions at a specified Bitcoin address.
+View a Bitcoin wallet balance and transactions for a specified address.
 
 # Installation
 
-Just open the Xcode project and build. No 3rd party libraries are used.
+Open the Xcode project and build. No 3rd party libraries are used.
 
 # Description
 
