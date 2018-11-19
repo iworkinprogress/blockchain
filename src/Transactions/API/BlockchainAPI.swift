@@ -21,6 +21,8 @@ struct BlockchainAPI {
         case failure(APIError)
     }
     
+    // Get the Wallet at specified address
+    // - Wallet contains a current balance and a list of Transactions
     static func getWallet(for address: String, completion: @escaping (Result)->Void) {
         guard let url = URL(string: "https://blockchain.info/multiaddr?active=" + address) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
