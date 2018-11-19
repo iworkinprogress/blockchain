@@ -15,7 +15,7 @@ class BlockchainAPITests: XCTestCase {
     
     func testGetTransactionWithValidXPub() {
         let asyncExpectation = expectation(description: "Blockchain API Request")
-        BlockchainAPI.getTransactions(for: walletAddress) { (result) in
+        BlockchainAPI.getWallet(for: walletAddress) { (result) in
             switch(result) {
             case .success(let wallet):
                 XCTAssertNotNil(wallet)
@@ -35,7 +35,7 @@ class BlockchainAPITests: XCTestCase {
     
     func testGetTransactionWithInvalidXPub() {
         let asyncExpectation = expectation(description: "Blockchain API Request")
-        BlockchainAPI.getTransactions(for: "1234567890") { (result) in
+        BlockchainAPI.getWallet(for: "1234567890") { (result) in
             switch(result) {
             case .success:
                 XCTFail()

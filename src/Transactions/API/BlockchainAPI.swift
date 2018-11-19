@@ -21,7 +21,7 @@ struct BlockchainAPI {
         case failure(APIError)
     }
     
-    static func getTransactions(for address: String, completion: @escaping (Result)->Void) {
+    static func getWallet(for address: String, completion: @escaping (Result)->Void) {
         guard let url = URL(string: "https://blockchain.info/multiaddr?active=" + address) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {

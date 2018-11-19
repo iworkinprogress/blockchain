@@ -13,7 +13,7 @@ class TransactionsViewController: UICollectionViewController {
     enum State {
         case loading
         case list(Wallet)
-        case detail(Wallet, Transaction)
+        case detail(Wallet)
         case error(APIError)
     }
     
@@ -43,7 +43,7 @@ class TransactionsViewController: UICollectionViewController {
         switch(state) {
         case .loading:
             return "Loading"
-        case .list(let wallet), .detail(let wallet, _):
+        case .list(let wallet), .detail(let wallet):
             return wallet.balanceString
         case .error:
             return "Error"
@@ -61,8 +61,6 @@ class TransactionsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = navigationTitle
-        navigationItem.backBarButtonItem = nil
-        collectionView.backgroundColor = Colors.black
         setupCollectionView()
         loadWallet()
     }
@@ -105,7 +103,7 @@ class TransactionsViewController: UICollectionViewController {
     // Attempt to load a wallet from BlockchainAPI
     // - Will update state with either a success or failure
     func loadWallet() {
-        BlockchainAPI.getTransactions(for: WalletAddresses.defaultAddress) { (result) in
+        BlockchainAPI.getWallet(for: WalletAddresses.defaultAddress) { (result) in
             DispatchQueue.main.async {
                 switch(result) {
                 case .success(let wallet):
@@ -122,11 +120,11 @@ class TransactionsViewController: UICollectionViewController {
         guard case .list(let wallet) = state else { return }
         navigationItem.rightBarButtonItem = closeButton
         collectionView.isPagingEnabled = true
-        state = .detail(wallet, transaction)
+        state = .detail(wallet)
     }
     
     @objc func zoomOut() {
-        guard case .detail(let wallet, _) = state else { return }
+        guard case .detail(let wallet) = state else { return }
         navigationItem.rightBarButtonItem = nil
         collectionView.isPagingEnabled = false
         state = .list(wallet)
@@ -204,7 +202,7 @@ class TransactionsViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch(state) {
-        case .list(let wallet), .detail(let wallet, _):
+        case .list(let wallet), .detail(let wallet):
             return wallet.transactions.count
         case .error, .loading:
             return 1
@@ -213,7 +211,7 @@ class TransactionsViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch(state) {
-        case .list(let wallet), .detail(let wallet, _):
+        case .list(let wallet), .detail(let wallet):
             let transactionCell = collectionView.dequeueReusableCell(withReuseIdentifier: TransactionCollectionViewCell.cellIdentifier, for: indexPath) as! TransactionCollectionViewCell
             transactionCell.transaction = wallet.transactions[indexPath.item]
             transactionCell.presentation = collectionView.collectionViewLayout == listLayout ? .list : .detail
