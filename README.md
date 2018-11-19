@@ -1,7 +1,4 @@
 # Blockchain
-Playing around with Blockchain API
-
-# Synopsis
 
 View a list of wallet balance and transactions at a specified Bitcoin address.
 
