@@ -20,15 +20,19 @@ Transaction data is loaded from a GET request to the Blockchain API. This JSON i
 `Transaction`
 - Detailed information about a transaction (amount, time, hash, etc.)
 
-Transactions are displayed in a `TransactionCollectionViewCell` by `TransactionsViewController`. It controls a `UICollectionView` that can switch between a list and detail layout.
+Transactions are displayed in a `TransactionCollectionViewCell` by `TransactionsViewController`. 
 
-`List`
+`TransactionsViewController`
+- Can present transactions in a list or detail layout
+- Supports Landscape and Portrait rotation 
+
+`List Layout`
 - Vertical scrolling list of transactions
 - Red rows are sent Bitcoins
 - Green rows are received Bitcoins
 - Tapping a row will display more details about the transaction
 
-`Detail`
+`Detail Layout`
 - Horizontal scrolling list of transactions
 - Additional details about the transaction (hash, fee, weight, size)
 - Tapping `Close` in navigation bar returns to the `list` view
