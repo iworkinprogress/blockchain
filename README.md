@@ -20,7 +20,7 @@ Transaction data is loaded from a GET request to the Blockchain API. This JSON i
 `Transaction`
 - Detailed information about a transaction (amount, time, hash, etc.)
 
-Transactions are displayed by `TransactionsViewController`. It controls a `UICollectionView` that can switch between a `list` and `detail` layout.
+Transactions are displayed by `TransactionsViewController`. It controls a `UICollectionView` that can switch between a list and detail layout.
 
 `List`
 - Vertical scrolling list of transactions
