@@ -53,7 +53,7 @@ Rotation
 - Landscape detail view overlaps safe area
 
 Animations
-- Animations between list and detial could be clearer
+- Animations between list and detial sometimes jump
 
 Gestures
 - Pinch to zoom out of detail view
